@@ -1,28 +1,34 @@
 export default {
 
-	modules: [
+  modules: [
+    '@cloak-app/boilerplate',
+    '@cloak-app/visual',
+  ],
 
-		// Cloak modules
-		'@cloak-app/boilerplate',
-		'@cloak-app/visual',
+  buildModules: [
+    '@nuxtjs/sanity/module'
+  ],
 
-		// Other modules
-	],
+  // Temporarily hardcode dynamic routes
+  generate: {
+    routes: ['/']
+  },
 
-	// Cloak settings
-	cloak: {
-		boilerplate: {
-			siteName: 'nuxt-sanity-demo',
-			// polyfills: ['default']
-		},
-	},
+  // Always show logs (doesn't work from within module)
+  build: { quiet: false },
 
-	// Temporarily hardcode dynamic routes
-	generate: {
-		routes: ['/']
-	},
+  // Cloak settings
+  cloak: {
+    boilerplate: {
+      siteName: 'nuxt-sanity-demo',
+      // polyfills: ['default']
+    },
+  },
 
-	// Always show logs (doesn't work from within module)
-	build: { quiet: false },
+  // Sanity settings
+  sanity: {
+    projectId: 'rnb0s8f2',
+    dataset: 'production',
+  }
 
 }

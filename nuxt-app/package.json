@@ -14,6 +14,7 @@
 		"@bkwld/light-or-dark": "^1.0.1",
 		"@cloak-app/boilerplate": "^1.0.10",
 		"@cloak-app/visual": "^0.2.1",
+		"@nuxtjs/sanity": "0.10.0",
 		"nuxt": "^2.15.7",
 		"vue-detachable-header": "^0.2.0"
 	}
