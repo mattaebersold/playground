@@ -1,18 +1,18 @@
 import {defineConfig} from 'sanity'
 import {deskTool} from 'sanity/desk'
 import {visionTool} from '@sanity/vision'
-import {schemaTypes} from './schemas'
+import { schema } from './config/schema'
+import { structure } from './config/structure'
 
 export default defineConfig({
   name: 'default',
-  title: 'nuxt-sanity-demo',
-
+  title: 'Nuxt Sanity Demo',
   projectId: 'rnb0s8f2',
   dataset: 'production',
-
-  plugins: [deskTool(), visionTool()],
-
-  schema: {
-    types: schemaTypes,
-  },
+  schema,
+  plugins: [
+    deskTool({
+      structure,
+    }),
+    visionTool()],
 })

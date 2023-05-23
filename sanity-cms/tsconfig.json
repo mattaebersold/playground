@@ -13,8 +13,12 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "incremental": true
+    "incremental": true,
+    "paths": {
+      "~/*": [ "./*" ],
+      "~/sanity/*": [ "./*" ]
+    }
   },
-  "include": ["**/*.ts", "**/*.tsx"],
+  "include": ["**/*.ts", "**/*.tsx", "vite.config.js"],
   "exclude": ["node_modules"]
 }
