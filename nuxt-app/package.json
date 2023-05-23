@@ -1,0 +1,20 @@
+{
+	"name": "nuxt-app",
+	"author": "Bukwild",
+	"version": "0.0.1",
+	"license": "UNLICENSED",
+	"private": true,
+	"scripts": {
+		"dev": "nuxt",
+		"build": "nuxt build",
+		"start": "nuxt start",
+		"generate": "nuxt generate --fail-on-error --target=static"
+	},
+	"dependencies": {
+		"@bkwld/light-or-dark": "^1.0.1",
+		"@cloak-app/boilerplate": "^1.0.10",
+		"@cloak-app/visual": "^0.2.1",
+		"nuxt": "^2.15.7",
+		"vue-detachable-header": "^0.2.0"
+	}
+}
