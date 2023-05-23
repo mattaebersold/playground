@@ -17,6 +17,10 @@ export default {
 		},
 	},
 
+	// Temporarily hardcode dynamic routes
+	generate: {
+		routes: ['/']
+	},
 
 	// Always show logs (doesn't work from within module)
 	build: { quiet: false },
