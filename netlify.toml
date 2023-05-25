@@ -8,4 +8,4 @@
 
 # Set Node version (Netlify doesn't respect monorepo's .nvmrc)
 [build.environment]
-	NODE_VERSION = '16'
+	NODE_VERSION = '18'
