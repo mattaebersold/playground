@@ -1,0 +1,11 @@
+[build]
+  base = 'nuxt-app'
+  command = 'yarn generate'
+  publish = 'dist'
+
+  # Alawys build
+  ignore = 'exit 1'
+
+# Set Node version (Netlify doesn't respect monorepo's .nvmrc)
+[build.environment]
+	NODE_VERSION = '16'
