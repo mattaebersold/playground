@@ -23,7 +23,7 @@ export default
   asyncData: ({ $sanity, $notFound, params }) ->
 
     # Get data
-    page = await $sanity.fetch getTower, uri: params.tower || '/'
+    page = await $sanity.fetch getTower, uri: "/#{params.tower || ''}"
     return $notFound() unless page
 
     # Set data

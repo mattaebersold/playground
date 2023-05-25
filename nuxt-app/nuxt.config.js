@@ -6,23 +6,26 @@ export default {
   ],
 
   buildModules: [
-    '@nuxtjs/sanity/module'
+    '@nuxtjs/sanity/module',
+    'packages/cloak-sanity/modules/generate-pages',
   ],
-
-  // Temporarily hardcode dynamic routes
-  generate: {
-    routes: ['/']
-  },
 
   // Always show logs (doesn't work from within module)
   build: { quiet: false },
 
   // Cloak settings
   cloak: {
+
     boilerplate: {
       siteName: 'nuxt-sanity-demo',
       // polyfills: ['default']
     },
+
+    sanity: {
+      pageTypes: [
+        'tower',
+      ]
+    }
   },
 
   // Sanity settings
