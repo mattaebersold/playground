@@ -16,9 +16,13 @@ export default {
     // Remove blocks that don't have a mapping yet
     return props.blocks.filter(block => {
       return Object.keys(typeMap).includes(block._type)
+    })
+
+    // Remove explicily disabled blocks
+    .filter(block => !block.disabled)
 
     // Create child components, spreading block data into props
-    }).map(block => {
+    .map(block => {
       return create(typeMap[block._type], {
         key: block._id,
         props: block,
