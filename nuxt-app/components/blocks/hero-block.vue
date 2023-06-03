@@ -1,10 +1,12 @@
 <template>
 
 <div>
-  <h2>Hero block</h2>
 
   <!-- Render body text -->
-  <sanity-content :blocks='body' />
+  <div class='max-w-screen-md mx-auto px-gutter'>
+    <h2>Hero block</h2>
+    <sanity-content :blocks='body' />
+  </div>
 
 </div>
 
