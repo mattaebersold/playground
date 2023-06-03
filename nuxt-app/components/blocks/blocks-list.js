@@ -1,6 +1,7 @@
 // Map Sanity block types to Nuxt component resolvable paths
 const typeMap = {
-  heroBlock: 'blocks-hero-block'
+  heroBlock: 'blocks-hero-block',
+  ctaBlock: 'blocks-cta-block',
 }
 
 // Render a list of blocks, wrapping them in BlockParent instances

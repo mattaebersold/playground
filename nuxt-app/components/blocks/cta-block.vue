@@ -1,7 +1,7 @@
 <template>
 
 <div>
-  <h2>Hero block</h2>
+  <h2>CTA Block</h2>
 
   <!-- Render body text -->
   <sanity-content :blocks='body' />
@@ -16,8 +16,8 @@ export default {
   inheritAttrs: false,
   props: {
     body: Array,
-    announcementButton: Object,
-    background: Object,
+    type: String,
+    buttons: Array,
   },
 
 }
