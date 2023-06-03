@@ -6,6 +6,7 @@ export default {
   ],
 
   buildModules: [
+    '@nuxtjs/tailwindcss',
     '@nuxtjs/sanity/module',
     'packages/cloak-sanity/modules/generate-pages',
   ],
