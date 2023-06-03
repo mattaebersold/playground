@@ -1,6 +1,11 @@
 <template>
 
-  <h1>I am a hero block</h1>
+<div>
+
+  <!-- Render body text -->
+  <sanity-content :blocks='body' />
+
+</div>
 
 </template>
 
