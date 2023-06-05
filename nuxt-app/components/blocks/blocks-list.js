@@ -15,7 +15,7 @@ export default {
   render(create, { props }) {
 
     // Remove blocks that don't have a mapping yet
-    return props.blocks.filter(block => {
+    return (props.blocks || []).filter(block => {
       return Object.keys(typeMap).includes(block._type)
     })
 
