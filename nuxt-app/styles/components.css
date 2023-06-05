@@ -1,0 +1,21 @@
+@layer components {
+
+  /* Alide up text elements */
+  .prose-animate-in {
+    h1, h2, h3, h4, h5, h6, p {
+      @apply animate-slide-up-in;
+    }
+    h2 {
+      animation-delay: .1s;
+    }
+    h3, h4, h5, h6, p {
+      animation-delay: .2s;
+    }
+
+    /* Child div elements should scale down and in, like button lists */
+    .prose>div {
+      @apply animate-scale-down-in;
+      animation-delay: .75s;
+    }
+  }
+}

@@ -1,0 +1,28 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import './components.css';
+@import "tailwindcss/utilities";
+
+/* Import tailwind libraries and custom files 👆 */
+/* (comments couldn't come before the imports) */
+/* https: //tailwindcss.com/docs/using-with-preprocessors#build-time-imports */
+
+/* Expose Tailwind config values */
+:root {
+  --gutter: theme(spacing.gutter);
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+
+  /* Default to anti-aliasing */
+  -webkit-font-smoothing: antialiased;
+
+  /* Disable outline on touch */
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+

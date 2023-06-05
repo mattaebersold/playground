@@ -2,12 +2,8 @@
 
 <template lang='pug'>
 
-.default-layout
+.default-layout(class='bg-indigo-100 text-indigo-900')
 	a.skip-content(href='#main') Skip to main content
-
-	//- Header stuff
-	//- layout-header-desktop
-	//- layout-header-mobile
 
 	//- Page content
 	main#main

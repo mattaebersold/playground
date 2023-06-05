@@ -3,9 +3,12 @@ export default {
   modules: [
     '@cloak-app/boilerplate',
     '@cloak-app/visual',
+    'modules/customize-cloak-boilerplate'
   ],
 
   buildModules: [
+    '@nuxtjs/tailwindcss',
+    '@nuxtjs/google-fonts',
     '@nuxtjs/sanity/module',
     'packages/cloak-sanity/modules/generate-pages',
   ],
@@ -28,10 +31,24 @@ export default {
     }
   },
 
+  // Load Google Fonts
+  googleFonts: {
+    families: {
+      Inter: {
+        wght: '100..900'
+      },
+    }
+  },
+
   // Sanity settings
   sanity: {
     projectId: 'rnb0s8f2',
     dataset: 'production',
-  }
+  },
+
+  // Customize Tailwind
+  tailwindcss: {
+    cssPath: '~/styles/global.css',
+  },
 
 }

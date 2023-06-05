@@ -3,7 +3,6 @@
 <template>
 
 <div>
-  <h1>{{ page.title }}</h1>
   <blocks-list :blocks='page.blocks' />
 </div>
 
