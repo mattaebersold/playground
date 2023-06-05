@@ -33,6 +33,11 @@ export default {
   sanity: {
     projectId: 'rnb0s8f2',
     dataset: 'production',
-  }
+  },
+
+  // Customize Tailwind
+  tailwindcss: {
+    cssPath: '~/styles/global.css',
+  },
 
 }
