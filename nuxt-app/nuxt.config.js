@@ -3,6 +3,7 @@ export default {
   modules: [
     '@cloak-app/boilerplate',
     '@cloak-app/visual',
+    'modules/customize-cloak-boilerplate'
   ],
 
   buildModules: [
