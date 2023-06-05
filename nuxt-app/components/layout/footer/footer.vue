@@ -1,29 +1,15 @@
-<!-- Layout footer -->
+<template>
 
-<template lang='pug'>
-
-footer.layout-footer: .max-w-l Footer content
+<footer class='border-t border-indigo-400 py-8f'>
+  <div class='max-w-screen-md mx-auto px-gutter'>
+    Footer content
+  </div>
+</footer>
 
 </template>
 
-<!-- ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<script>
+export default {
 
-<script lang='coffee'>
-# export default
-# 	components:
-# 	props: []
-# 	data: ->
-# 	computed:
-# 	watch:
-# 	methods:
+}
 </script>
-
-<!-- ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––– -->
-
-<style lang='stylus' scoped>
-
-.layout-footer
-	border-top 1px solid black
-	fluid-space padding-v, 'm'
-
-</style>
