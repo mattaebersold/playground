@@ -8,6 +8,7 @@ export default {
 
   buildModules: [
     '@nuxtjs/tailwindcss',
+    '@nuxtjs/google-fonts',
     '@nuxtjs/sanity/module',
     'packages/cloak-sanity/modules/generate-pages',
   ],
@@ -27,6 +28,15 @@ export default {
       pageTypes: [
         'tower',
       ]
+    }
+  },
+
+  // Load Google Fonts
+  googleFonts: {
+    families: {
+      Inter: {
+        wght: '100..900'
+      },
     }
   },
 

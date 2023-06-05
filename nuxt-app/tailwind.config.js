@@ -16,6 +16,12 @@ module.exports = {
   ],
   theme: {
 
+    // Overriding fontFamily to use @next/font loaded families
+    // See pages/_app.tsx
+    fontFamily: {
+      sans: 'Inter, Sans-Serif',
+    },
+
     extend: {
 
       // Make a custom themes for BasicPortableText
