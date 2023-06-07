@@ -8,6 +8,9 @@
     <portable-text-marketing :value='body' />
   </div>
 
+  <!-- Example of rendering an image -->
+  <SanityVisual :image='background' />
+
 </div>
 
 </template>
