@@ -1166,9 +1166,9 @@
     webpack-graphql-loader gpoitch/graphql-loader#gp/refresh
 
 "@cloak-app/visual@^1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@cloak-app/visual/-/visual-1.1.0.tgz#cb76fb9275b02fb6aa7b04a2c4bc5e58c2f01298"
-  integrity sha512-soW7H8FEnwLWGyfWyD4tGpAj8M4+xyA/2zl0JWWTub7ayibJy7jFHFTraVKTs8Fi/aOeIQeJW1fbbVbzrikBxw==
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@cloak-app/visual/-/visual-1.1.1.tgz#f43346d9c53b482fe1345ae61a07459ee7946ea7"
+  integrity sha512-UHk2aah5VdqB6nqXaRfEA5NApgayi7+ZLRAGq30jE0KepXE1B5pnCqiYufoH2UEZ96J8P/axy/2LgWu61uLY6g==
   dependencies:
     "@cloak-app/utils" "^1.2.0"
     "@nuxt/image" "0.6.0 || ^0.6.3"
@@ -14215,7 +14215,7 @@ webpack-dev-middleware@^5.3.3:
     range-parser "^1.2.1"
     schema-utils "^4.0.0"
 
-webpack-graphql-loader@gpoitch/graphql-loader#gp/refresh:
+"webpack-graphql-loader@github:gpoitch/graphql-loader#gp/refresh":
   version "1.0.2"
   resolved "https://codeload.github.com/gpoitch/graphql-loader/tar.gz/42f0f990a6132ccd5e284d0e6cfeade12728dba2"
   dependencies:
