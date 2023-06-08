@@ -1,13 +1,13 @@
 {
-	"compilerOptions": {
-		"baseUrl": ".",
-		"paths": {
-			"sanity-cms/*": [
-				"./sanity-cms/*"
-			],
-			"nuxt-app/*": [
-				"./nuxt-app/*"
-			],
-		}
-	}
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "sanity-cms/*": [
+        "./sanity-cms/*"
+      ],
+      "nuxt-app/*": [
+        "./nuxt-app/*"
+      ],
+    }
+  }
 }

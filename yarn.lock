@@ -14215,7 +14215,7 @@ webpack-dev-middleware@^5.3.3:
     range-parser "^1.2.1"
     schema-utils "^4.0.0"
 
-"webpack-graphql-loader@github:gpoitch/graphql-loader#gp/refresh":
+webpack-graphql-loader@gpoitch/graphql-loader#gp/refresh:
   version "1.0.2"
   resolved "https://codeload.github.com/gpoitch/graphql-loader/tar.gz/42f0f990a6132ccd5e284d0e6cfeade12728dba2"
   dependencies:
