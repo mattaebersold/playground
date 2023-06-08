@@ -1,14 +1,21 @@
 <!-- General layout -->
+<template>
 
-<template lang='pug'>
+<div class='
+  default-layout
+  bg-indigo-100
+  text-indigo-900t'>
 
-.default-layout(class='bg-indigo-100 text-indigo-900')
-  a.skip-content(href='#main') Skip to main content
+  <a class='skip-content' href='#mail'>Skip to main content</a>
 
-  //- Page content
-  main#main
-    nuxt.page
-    layout-footer
+  <!-- Page Content -->
+  <main id='main'>
+    <nuxt class='page'>
+      <layout-footer></layout-footer>
+    </nuxt>
+  </main>
+
+</div>
 
 </template>
 

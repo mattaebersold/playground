@@ -1,14 +1,18 @@
 <!-- Custom error page -->
 
-<template lang='pug'>
+<template>
 
-.error-page: template(v-if='!$fetchState.pending')
+<div class='error-page'>
+  <template v-if='!$fetchState.pending'>
 
-  //- Use blocks to render page
-  blocks-list(v-if='page' :blocks='page.blocks')
+    <!-- Use blocks to render page -->
+    <blocks-list v-if='page' :blocks='page.blocks'></blocks-list>
 
-  //- Or show simple message
-  h1.style-h1(v-else) {{ message }}
+    <!-- Or show a simple message -->
+    <h1 class='style-h1' v-else>{{ message }}</h1>
+
+  </template>
+</div>
 
 </template>
 
