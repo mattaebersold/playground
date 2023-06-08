@@ -1,86 +1,117 @@
 <!-- Standard pill button -->
+<script>
+import SmartLink from 'vue-routing-anchor-parser/smart-link';
 
-<script lang='coffee'>
-import SmartLink from 'vue-routing-anchor-parser/smart-link'
-export default
+export default {
 
-  props:
+  props: {
 
-    # URL to link to
-    to: String
+    // URL to link to
+    to: String,
 
-    # Size of the button
-    size:
-      type: String
-      validator: (val) -> val in ['small']
+    // Size of the button
+    size: {
+      type: String,
+      validator: function(val) {
+        return val === 'small';
+      }
+    },
 
-    # If a <button>, what type is it
-    type:
-      type: String
-      default: 'button'
-      validator: (val) -> val in ['button', 'submit', 'reset']
+    type: {
+      type: String,
+      default: 'button',
+      validator: function(val) {
+        return val === 'button' || val === 'submit' || val === 'reset';
+      }
+    },
 
-    # States
-    loading: Boolean
+    loading: Boolean,
     disabled: Boolean
 
-  computed:
+  },
 
-    # Root classes
-    classes: -> [
-      "size-#{@size}" if @size
-      loading: @loading
-    ]
+  computed: {
 
-    # States that should supress clicks
-    nonInteractive: -> @disabled or @loading
-
-  methods:
-
-    # Prevent clicking if non-interactive
-    onClick: (e) ->
-      if @nonInteractive
-      then e.preventDefault()
-      else @$emit 'click'
-
-  # Conditionally change the root button type
-  render: (create) ->
-
-    # Make the shared data object
-    data =
-      class: ['btn', ...@classes]
-      domProps: disabled: @nonInteractive
-      on: click: @onClick
-
-    # The contents of the button
-    children = [
-      create 'span', class: 'shape'
-      create 'span', class: 'slot', @$nonEmpty [
-        @$slots.default
-        if @loading then create 'span', class: 'icon-spinner'
-      ]
-    ]
-
-    # Render a smart-link
-    if @to
-      create SmartLink, {
-        ...data
-        attrs: {
-          ...data.attrs
-          role: 'button'
+    classes: function() {
+      return [
+        this.size ? `size-${this.size}` : null,
+        {
+          loading: this.loading
         }
-        props: { @to }
-      }, children
+      ];
+    },
 
-    # Render an html button
-    else
-      create 'button', {
-        ...data
+    nonInteractive: function() {
+      if(this.disabled || this.loading) { return true; }
+      else { return false; }
+    }
+
+  },
+
+  methods: {
+
+    // Prevent clicking if non-interactive
+    onClick: function(e) {
+      if(this.nonInteractive) { e.preventDefault(); }
+      else {
+        this.$emit('click');
+      }
+    },
+
+    // Conditionally change the root button type
+    render: function(create) {
+
+      let data = {
+        class: ['btn', ...this.classes],
         domProps: {
-          ...data.domProps
-          @type
+          disabled: this.nonInteractive
+        },
+        on: {
+          click: this.onClick
         }
-      }, children
+      };
+
+      // The contents of the button
+      let children = [
+        create('span',
+        {
+          class: 'shape'
+        }),
+        create('span',
+        {
+          class: 'slot'
+        },
+        this.$nonEmpty([
+          this.$slots.default,
+          this.loading ? create('span',
+          {
+            class: 'icon-spinner'
+          }) : void 0
+        ]))
+      ];
+
+
+      if (this.to) {
+        create(SmartLink, {
+          ...data,
+          attrs: {
+            ...data.attrs,
+            role: 'button'
+          },
+          props: {to: this.to}
+        }, children);
+      } else {
+        // Render an html button
+        create('button', {
+          ...data,
+          domProps: {...data.domProps, type: this.type}
+        }, children);
+      }
+
+    }
+  }
+}
+
 
 </script>
 
