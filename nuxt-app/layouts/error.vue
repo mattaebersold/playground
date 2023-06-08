@@ -1,87 +1,140 @@
 <!-- Custom error page -->
 
-<template lang='pug'>
+<template>
 
-.error-page: template(v-if='!$fetchState.pending')
+<div class='error-page'>
+  <template v-if='!$fetchState.pending'>
 
-  //- Use blocks to render page
-  blocks-list(v-if='page' :blocks='page.blocks')
+    <!-- Use blocks to render page -->
+    <blocks-list v-if='page' :blocks='page.blocks' />
 
-  //- Or show simple message
-  h1.style-h1(v-else) {{ message }}
+    <!-- Or show a simple message -->
+    <h1 class='style-h1' v-else>{{ message }}</h1>
+
+  </template>
+</div>
 
 </template>
 
 <!-- ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––– -->
 
-<script lang='coffee'>
-# import pageMixin from '@cloak-app/craft/mixins/page'
-# import getTower from '~/queries/tower.gql'
 
-export default
-  name: 'Error'
+<script>
+// import pageMixin from '@cloak-app/craft/mixins/page'
+import { getTower } from '~/queries/towerQueries';
 
-  # mixins: [ pageMixin ]
+export default {
 
-  props: ['error']
+  name: 'Error',
 
-  data: ->
-    page: null
-    redirects: []
+  props: {
+    error: Object
+  },
 
-  fetch: ->
+  data: function() {
+		return {
+			page: null,
+      redirects: []
+		}
+	},
 
-  # 	# Get get the tower data
-  # 	@page = await @$craft.getEntry
-  # 		query: getTower
-  # 		variables: { @uri }
 
-  # 	# Fetch all of the redirects, in case this page should normally client side
-  # 	# redirect.
-  # 	if @$config.cloak.craft.generateRedirects
-  # 	then @redirects = await @$craft.getEntries query: '''
-  # 		query getRedirects($site:[String]) {
-  # 			entries(site:$site, type:"redirects") {
-  # 				... on redirects_redirects_Entry {
-  # 					from: redirectFrom
-  # 					to: redirectTo
-  # 				}
-  # 			}
-  # 		}
-  # 	'''
+  // not craft, so this needs to be ported for sanity
 
-  # Show Sentry user input dialog if an error
-  # mounted: -> @showSentryDialog() if @uri == 'error'
+  fetch: async function() {
 
-  computed:
+    // get the tower data
+    // this.page = await this.$craft.getEntry({
+    //   query: getTower,
+    //   variables: {
+    //     uri: this.uri
+    //   }
+    // })
 
-    # Figure out which error Tower to show
-    uri: -> switch @error?.statusCode
-      when 404 then 'page-not-found'
-      else 'error'
+    // Fetch all of the redirects, in case
+    // this page should normally client side redirect
+    // if(this.$config.cloak.craft.generateRedirects) {
+    //   this.redirects = await this.$craft.getEntries({
+    //     query: `
+    //       query getRedirects($site:[String]) {
+    //         entries(site:$site, type:"redirects") {
+    //           ... on redirects_redirects_Entry {
+    //             from: redirectFrom
+    //             to: redirectTo
+    //           }
+    //         }
+    //       }
+    //     `
+    //   })
+    // }
 
-    # Simple error message
-    message: -> switch @error?.statusCode
-      when 404 then 'Page Not Found'
-      else 'An Error Occured'
+  },
 
-  watch:
+  // show Sentry user input dialog if an error
+  mounted: function() {
+    if(this.uri == 'error') {
+      this.showSentryDialog()
+    }
+  },
 
-    # When redirects is set (which may be after mounted when SPAing)
-    redirects:
-      immediate: true
-      handler: -> @redirectIfMatch()
+  computed: {
 
-  methods:
+    uri: function() {
 
-    # If the current path matches the redirect "from", then redirect
-    redirectIfMatch: ->
-      if match = @redirects.find ({ from }) => from == @$route.path
-      then location.href = match.to
+      switch(this.error?.statusCode) {
+        case 404:
+          'page-not-found';
+          break;
+        default:
+          'error';
+      }
+    },
 
-    # Show the sentry dialog
-    # https://docs.sentry.io/enriching-error-data/user-feedback/?platform=browser
-    showSentryDialog: -> @$defer => @$sentry?.showReportDialog()
+    message: function() {
+      switch(this.error?.statusCode) {
+        case 404:
+          'Page Not Found';
+          break;
+        default:
+          'An Error Occured';
+      }
+    }
+
+  },
+
+  methods: {
+
+    // If the current path matches the redirect "from", then redirect
+    redirectIfMatch: function() {
+      let match;
+      if(match = this.redirects.find(({from}) => {
+        return from === this.$route.path;
+      })) {
+        location.href = match.to;
+      }
+
+    },
+
+    // show sentry dialog
+    // https://docs.sentry.io/enriching-error-data/user-feedback/?platform=browser
+    showSentryDialog: function() {
+      this.defer(() => {
+        return this.$sentry?.showReportDialog();
+      })
+    }
+
+  },
+
+  watch: {
+    redirects: {
+      immediate: true,
+      handler: function() {
+        return this.redirectIfMatch();
+      }
+    }
+  }
+
+}
 
 </script>
 

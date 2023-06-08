@@ -1,5 +1,4 @@
-<!-- Standard Block renderer -->
-
+<!-- Tower -->
 <template>
 
 <div>
@@ -10,24 +9,29 @@
 
 <!-- ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––– -->
 
-<script lang='coffee'>
-# import pageMixin from '@cloak-app/craft/mixins/page'
-import { getTower } from '~/queries/towerQueries'
+<script>
 
-export default
-  name: 'Tower'
+// import pageMixin from '@cloak-app/craft/mixins/page'
+import { getTower } from '~/queries/towerQueries';
 
-  # mixins: [ pageMixin ]
+export default {
 
-  # Get Tower data
-  asyncData: ({ $sanity, $notFound, params }) ->
+  name: 'Tower',
 
-    # Get data
-    page = await $sanity.fetch getTower, uri: "/#{params.tower || ''}"
-    return $notFound() unless page
+  asyncData: async function({ $sanity, $notFound, params }) {
 
-    # Set data
-    return { page }
+    let page = await $sanity.fetch(getTower, {
+      uri: `/${params.tower || ''}`
+    });
+
+    if(!page) { return $notFound(); }
+
+    // set the data
+    return { page };
+
+  }
+
+}
 
 </script>
 
