@@ -1,3 +1,4 @@
+// I could only get relative imports to work here
 import {
   BackgroundColor,
   Block,
@@ -10,51 +11,53 @@ import { mapOption, mapOptions } from '../../lib/helpers'
 
 // Apply common layout options to block
 export default {
-  functional: true,
 
   props: {
-
-    // Sanity common configuration
-    hideWhen: Array,
-    backgroundColor: String,
-    blockSpacing: String,
-    paddingTop: String,
-    paddingBottom: String,
-
-    // Block order context
+    block: Object,
     index: Number,
+    previousBlock: Object,
+    nextBlock: Object,
   },
 
-  render(create, { props, children }) {
+  provide() {
+    return {
+      blockIndex: this.index,
+      previousBlock: this.previousBlock,
+      nextBlock: this.nextBlock,
+    }
+  },
+
+  render() {
 
     // Expect 1 child
-    if (children.length != 1) {
-      console.error(`BlockParent children.length is ${children.length}`)
+    if (this.$slots.default.length != 1) {
+      console.error(`BlockParent slot length is ${this.$slots.default.length}`)
       return
     }
-    const child = children[0]
+    const child = this.$slots.default[0]
 
     // Add css clases to the child
     if (!child.data) child.data = {}
     child.data.class = [
 
       // Hide at different viewports
-      mapOptions(props.hideWhen, {
+      mapOptions(this.block.hideWhen, {
         [HideWhen.Mobile]: 'when-mobile:hidden',
         [HideWhen.Tablet]: 'when-tablet:hidden',
         [HideWhen.Desktop]: 'when-desktop:hidden',
       }),
 
       // Apply margin top between blocks
-      // mapBlockSpacingToTailwindClass(props, blockOrder.previous),
+      mapBlockSpacingToTailwindClass(this.block, this.previousBlock),
 
-      mapOption(props.backgroundColor, {
+      // Set a background color
+      mapOption(this.block.backgroundColor, {
         [BackgroundColor.Dark]: 'bg-indigo-700 text-white',
       }),
 
       // Set padding within block, like if there is a background
-      // mapPaddingTopToTailwindClass(block, blockOrder.previous),
-      // mapPaddingBottomToTailwindClass(block, blockOrder.next),
+      mapPaddingTopToTailwindClass(this.block, this.previousBlock),
+      mapPaddingBottomToTailwindClass(this.block, this.nextBlock),
     ]
 
     // Return the modified chilc block

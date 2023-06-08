@@ -25,13 +25,15 @@ export default {
     .filter(block => !block.disabled)
 
     // Create block listing
-    .map((block, index) => {
+    .map((block, index, blocks) => {
 
       // Make BlockParent wrapper,
       return create(BlockParent, {
         props: {
-          ...block, // Spread block props
+          block,
           index,
+          previousBlock: index > 0 ? blocks[index - 1] : null,
+          nextBlock: index < blocks.length - 1 ? blocks[index + 1] : null,
         },
       }, [
 
