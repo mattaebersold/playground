@@ -7,6 +7,7 @@ export default {
   ],
 
   buildModules: [
+    '@nuxt/typescript-build',
     '@nuxtjs/tailwindcss',
     '@nuxtjs/google-fonts',
     '@nuxtjs/sanity/module',
