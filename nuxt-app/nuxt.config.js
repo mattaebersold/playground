@@ -34,8 +34,7 @@ export default {
 
   // Load Google Fonts
   googleFonts: {
-    families: {
-      Inter: {
+    families: { Inter: {
         wght: '100..900'
       },
     }
@@ -60,5 +59,11 @@ export default {
   tailwindcss: {
     cssPath: '~/styles/global.css',
   },
+
+  // Disable type checking in Nuxt since we're only adding this at the moment
+  // to import types from sanity-cms directory
+  typescript: {
+    typeCheck: false,
+  }
 
 }
