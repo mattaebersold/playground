@@ -13,7 +13,16 @@ export default {
   functional: true,
 
   props: {
-    backgroundColor: String
+
+    // Sanity common configuration
+    hideWhen: Array,
+    backgroundColor: String,
+    blockSpacing: String,
+    paddingTop: String,
+    paddingBottom: String,
+
+    // Block order context
+    index: Number,
   },
 
   render(create, { props, children }) {
@@ -25,13 +34,30 @@ export default {
     }
     const child = children[0]
 
-    // Return modified child vnode
+    // Add css clases to the child
     if (!child.data) child.data = {}
     child.data.class = [
+
+      // Hide at different viewports
+      mapOptions(props.hideWhen, {
+        [HideWhen.Mobile]: 'when-mobile:hidden',
+        [HideWhen.Tablet]: 'when-tablet:hidden',
+        [HideWhen.Desktop]: 'when-desktop:hidden',
+      }),
+
+      // Apply margin top between blocks
+      // mapBlockSpacingToTailwindClass(props, blockOrder.previous),
+
       mapOption(props.backgroundColor, {
         [BackgroundColor.Dark]: 'bg-indigo-700 text-white',
       }),
+
+      // Set padding within block, like if there is a background
+      // mapPaddingTopToTailwindClass(block, blockOrder.previous),
+      // mapPaddingBottomToTailwindClass(block, blockOrder.next),
     ]
+
+    // Return the modified chilc block
     return child
   }
 }
