@@ -1,7 +1,9 @@
+import BlockParent from "./BlockParent"
+
 // Map Sanity block types to Nuxt component resolvable paths
 const typeMap = {
-  heroBlock: 'blocks-hero-block',
-  ctaBlock: 'blocks-cta-block',
+  heroBlock: 'BlocksHeroBlock',
+  ctaBlock: 'BlocksCtaBlock',
 }
 
 // Render a list of blocks, wrapping them in BlockParent instances
@@ -22,12 +24,20 @@ export default {
     // Remove explicily disabled blocks
     .filter(block => !block.disabled)
 
-    // Create child components, spreading block data into props
+    // Create block listing
     .map(block => {
-      return create(typeMap[block._type], {
-        key: block._id,
-        props: block,
-      })
+
+      // Make BlockParent wrapper,
+      return create(BlockParent, {
+        props: block, // Spread block props
+      }, [
+
+        // Make the actual block
+        create(typeMap[block._type], {
+          key: block._id,
+          props: block, // Spread block props
+        })
+      ])
     })
 
   },
