@@ -1,4 +1,4 @@
 <!-- Disable the layout -->
 <template>
-<nuxt></nuxt>
+  <nuxt />
 </template>

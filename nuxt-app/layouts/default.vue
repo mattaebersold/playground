@@ -11,7 +11,7 @@
   <!-- Page Content -->
   <main id='main'>
     <nuxt class='page'>
-      <layout-footer></layout-footer>
+      <layout-footer />
     </nuxt>
   </main>
 
@@ -21,9 +21,11 @@
 
 <!-- ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––– -->
 
-<script lang='coffee'>
-export default
+<script>
+
+export default {
   name: 'DefaultLayout'
+}
 
 </script>
 
