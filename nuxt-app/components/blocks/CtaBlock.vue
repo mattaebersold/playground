@@ -2,10 +2,21 @@
 
 <div>
 
-  <!-- Render body text -->
-  <div class='max-w-screen-md mx-auto px-gutter'>
-    <h2>CTA Block</h2>
-    <portable-text-marketing :value='body' />
+  <!-- centered -->
+  <div v-if='type == "simpleCentered"' class='max-w-screen-md
+    mx-auto
+    px-gutter
+    text-center'>
+    <cta-contents :body='body' />
+  </div>
+
+  <!-- justified -->
+  <div v-if='type == "simpleJustified"' class='max-w-screen-xl
+      mx-auto px-gutter
+      md:flex
+      md:items-center
+      md:justify-between'>
+    <cta-contents :body='body' />
   </div>
 
 </div>
@@ -13,7 +24,11 @@
 </template>
 
 <script>
+import CtaContents from './cta/contents';
+
 export default {
+
+  components: { CtaContents },
 
   inheritAttrs: false,
   props: {
