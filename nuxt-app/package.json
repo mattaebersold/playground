@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@bkwld/light-or-dark": "^1.0.1",
+    "@bkwld/vue-in-view": "^0.1.1",
     "@cloak-app/boilerplate": "^1.0.10",
     "@cloak-app/visual": "^1.1.0",
     "@nuxtjs/sanity": "0.10.0",

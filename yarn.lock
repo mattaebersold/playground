@@ -1122,6 +1122,13 @@
   resolved "https://registry.yarnpkg.com/@bkwld/light-or-dark/-/light-or-dark-1.0.1.tgz#23a365153a75d14cc6b2432a8cd338f5b489165d"
   integrity sha512-iPE6K+Z14D+kaJaymJ8w9g9Lbhc+ylf0VWH61KwL1k5AwV0OEjtKQs9DFsnORV0sayfyiznp7DOKIkl8w/tG/w==
 
+"@bkwld/vue-in-view@^0.1.1":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@bkwld/vue-in-view/-/vue-in-view-0.1.1.tgz#a31d7f3ebfa214c4260f349ec383d2f90753a81a"
+  integrity sha512-OKIMLRIHqTnKWTy8O5pATSgvz3k6oUXJpDE2HtbKB6flbDS18AkVtOY7FdJ3LYU5/jqHVQFIYevoHf71s0Vthw==
+  dependencies:
+    "@cloak-app/utils" "^1.2.0"
+
 "@cloak-app/boilerplate@^1.0.10":
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/@cloak-app/boilerplate/-/boilerplate-1.4.0.tgz#f3e6938f36cab0bad1fe99c9bbba9cf3c42746a1"
