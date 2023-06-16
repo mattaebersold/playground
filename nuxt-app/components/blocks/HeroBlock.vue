@@ -2,13 +2,19 @@
 
 <div class='relative isolate overflow-hidden pt-header bg-slate-900'>
 
-  <in-view animate once class='animate-[scale_.75s_0s_both] absolute w-full h-full top-0'>
+  <in-view
+    animate once
+    v-if='background'
+    class='absolute
+      w-full h-full top-0
+      animate-[scale_.75s_0s_both]'>
     <SanityVisual :image='background' sizes='100vw' expand class='absolute inset-0' />
   </in-view>
 
 
   <!-- Render body text -->
-  <in-view animate once class='animate-[scale_.75s_.3s_both]'>
+  <in-view animate once
+    v-if='body' class='animate-[scale_.75s_.3s_both]'>
     <div class='
       relative
       max-w-screen-md mx-auto px-gutter
