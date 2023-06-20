@@ -11,10 +11,7 @@ export default {
   },
 
   render(create, { data }) {
-
-    console.log(typeMap[data.props.type]);
-
-    create(typeMap[data.props.type], {
+    return create(typeMap[data.props.type], {
       key: data.props._key,
       props: {
         body: data.props.body,

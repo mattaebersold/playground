@@ -1,10 +1,6 @@
 <template>
 
-<div class='max-w-screen-md
-  mx-auto
-  px-gutter'>
-  <BlocksCtaContents :body='body' :buttons='buttons' />
-</div>
+<BlocksCtaContents :body='body' :buttons='buttons' />
 
 </template>
 

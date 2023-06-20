@@ -2,11 +2,16 @@
 
 <InView animate once class='animate-[scale_.75s_.5s_both]'>
 
-  <PortableTextMarketing v-if='body' :value='body' />
+  <div class='max-w-screen-md mx-auto px-gutter'>
 
-  <!-- Buttons -->
-  <div class='flex flex-wrap'>
-    <BtnList :buttons='buttons' />
+    <!-- Body -->
+    <PortableTextMarketing v-if='body' :value='body' />
+
+    <!-- Buttons -->
+    <div v-if='buttons.length > 0' class='flex flex-wrap'>
+      <BtnList :buttons='buttons' />
+    </div>
+
   </div>
 
 </InView>

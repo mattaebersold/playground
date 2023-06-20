@@ -1,9 +1,6 @@
 <template>
 
-<div class='max-w-screen-md
-  mx-auto
-  px-gutter
-  text-center'>
+<div class='text-center'>
   <BlocksCtaContents :body='body' :buttons='buttons' />
 </div>
 
