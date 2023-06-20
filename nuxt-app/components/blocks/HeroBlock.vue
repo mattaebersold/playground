@@ -41,7 +41,7 @@
   <!-- Announcement Button -->
   <InView animate once v-if='announcementButton' class='animate-[scale_.75s_.3s_both]'>
     <div class='text-center'>
-      <!-- <Btn :to='announcementButton.url'>{{ announcementButton.cta }}</Btn> -->
+      <Btn :to='announcementButton.url'>{{ announcementButton.cta }}</Btn>
     </div>
   </InView>
 
