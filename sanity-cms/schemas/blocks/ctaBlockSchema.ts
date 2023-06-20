@@ -32,11 +32,9 @@ export const ctaBlockSchema = makeBlockSchema({
       ],
     },
 
-    // Only show buttons when they can't be rendered within the body field
     {
       name: 'buttons',
       type: 'array',
-      hidden: ({ parent }) => parent.type != CtaBlockType.SimpleJustified,
       of: [
         { type: 'button' },
       ]
