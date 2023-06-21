@@ -1,5 +1,3 @@
-// import SmartLink from 'vue-routing-anchor-parser/smart-link';
-
 const typeMap = {
   primary: 'BtnPrimary',
   secondary: 'BtnSecondary',
@@ -12,9 +10,9 @@ export default {
   render(create, { props }) {
     return create(typeMap[props.btn.type], {
       key: props.btn._key,
-      props: {
-        btn: props.btn,
-      }
+
+      // pass all props
+      props: props
     })
   }
 }

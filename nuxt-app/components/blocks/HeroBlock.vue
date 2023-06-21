@@ -62,7 +62,7 @@
 
     <!-- Animate the body -->
     <InView animate once v-if='body' class='animate-[scale_.75s_.3s_both]'>
-      <PortableTextMarketing :value='body' />
+      <PortableTextMarketing :value='body' alignment='centered' />
     </InView>
 
   </div>

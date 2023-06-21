@@ -5,7 +5,10 @@
   <div :class='classes'>
 
     <!-- Body -->
-    <PortableTextMarketing v-if='body' :value='body' />
+    <PortableTextMarketing
+      v-if='body'
+      :value='body'
+      :alignment='alignment' />
 
     <!-- Buttons -->
     <div :class='btnClasses'>

@@ -1,10 +1,10 @@
 <template>
 
-<div class='flex flex-wrap items-center'>
-  <Btn
-    v-for='btn, index in buttons'
-    :key='index'
-    :btn='btn' />
+<div class='flex flex-wrap' :class='classes'>
+  <Btn v-for='btn in buttons'
+    :key='btn.id'
+    :btn='btn'
+    margins />
 </div>
 
 </template>
@@ -14,8 +14,20 @@ export default {
 
   inheritAttrs: false,
   props: {
-    buttons: Array
+    buttons: Array,
+    alignment: String
   },
+
+  computed: {
+    classes: function() {
+      let classes = ['flex', 'flex-wrap'];
+      if(this.alignment == 'centered') {
+        classes.push('justify-center');
+      }
+
+      return classes;
+    }
+  }
 
 }
 </script>

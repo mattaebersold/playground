@@ -1,29 +1,34 @@
 <template>
 
-<SmartLink :to='btn.url' class='
-  text-sm
-  font-semibold
-  leading-6
-  no-underline
-  whitespace-nowrap'>
-
-  {{ btn.text }}
-</SmartLink>
+<BtnParent :btn='btn' :margins='margins'>
+  <span class='
+    text-sm
+    font-semibold
+    leading-6
+    no-underline
+    whitespace-nowrap'>
+    {{ btn.text }}
+  </span>
+</BtnParent>
 
 </template>
 
 <script>
-import SmartLink from 'vue-routing-anchor-parser/smart-link'
 
 export default {
 
-  components: { SmartLink },
-
   inheritAttrs: false,
   props: {
-    btn: Object
-  },
+    btn: Object,
+    margins: {
+      type: Boolean,
+      default: false
+    }
+  }
 
 }
 
+
 </script>
+
+

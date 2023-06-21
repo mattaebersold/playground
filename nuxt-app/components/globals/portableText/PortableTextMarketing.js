@@ -5,12 +5,12 @@ import PortableTextBase from "./PortableTextBase"
 export default {
   functional: true,
 
-  // Share all props from Base
-  props: PortableTextBase.props,
+  // Share all props from Base, and alignment from parent
+  props: { ...PortableTextBase.props, alignment: String },
 
   render(create, { props, data }) {
     return create(PortableTextBase, {
-      props, // Passthrough all props
+      props: props, // Passthrough all props
 
       // Add Sanity/typography prose classes
       class: ['prose-marketing', data.class],
