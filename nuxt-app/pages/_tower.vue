@@ -11,12 +11,14 @@
 
 <script>
 
-// import pageMixin from '@cloak-app/craft/mixins/page'
 import { getTower } from '~/queries/towerQueries';
+import HeadMixin from '~/mixins/Head';
 
 export default {
 
   name: 'Tower',
+
+  mixins: [ HeadMixin ],
 
   asyncData: async function({ $sanity, $notFound, params }) {
 
