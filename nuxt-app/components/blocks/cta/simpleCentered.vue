@@ -1,8 +1,9 @@
 <template>
 
-<div class='text-center'>
-  <BlocksCtaContents :body='body' :buttons='buttons' />
-</div>
+<BlocksCtaContents
+  :body='body'
+  :buttons='buttons'
+  alignment='centered' />
 
 </template>
 

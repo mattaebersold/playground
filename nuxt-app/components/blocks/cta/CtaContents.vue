@@ -2,13 +2,13 @@
 
 <InView animate once class='animate-[scale_.75s_.5s_both]'>
 
-  <div class='max-w-screen-md mx-auto px-gutter'>
+  <div :class='classes'>
 
     <!-- Body -->
     <PortableTextMarketing v-if='body' :value='body' />
 
     <!-- Buttons -->
-    <div v-if='buttons.length > 0' class='flex flex-wrap'>
+    <div :class='btnClasses'>
       <BtnList :buttons='buttons' />
     </div>
 
@@ -24,8 +24,34 @@ export default {
   inheritAttrs: false,
   props: {
     body: Array,
-    buttons: Array
+    buttons: Array,
+    alignment: String
   },
+
+  computed: {
+
+    // text container classes
+    classes: function() {
+      let classes = ['max-w-screen-md', 'mx-auto', 'px-gutter'];
+
+      if(this.alignment == 'centered') {
+        classes.push('text-center');
+      }
+
+      return classes;
+    },
+
+    // button container classes
+    btnClasses: function() {
+      let classes = ['flex', 'flex-wrap', 'align-center', 'mt-12'];
+
+      if(this.alignment == 'centered') {
+        classes.push('justify-center');
+      }
+
+      return classes;
+    }
+  }
 
 }
 </script>

@@ -1,6 +1,9 @@
 <template>
 
-<BlocksCtaContents :body='body' :buttons='buttons' />
+<BlocksCtaContents
+  :body='body'
+  :buttons='buttons'
+  alignment='justified' />
 
 </template>
 

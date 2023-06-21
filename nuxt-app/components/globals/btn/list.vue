@@ -1,11 +1,10 @@
 <template>
 
-<div class='flex flex-wrap'>
+<div class='flex flex-wrap items-center'>
   <Btn
-    class='mx-6'
     v-for='btn, index in buttons'
     :key='index'
-    :to='btn.url'>{{ btn.cta }}</Btn>
+    :btn='btn' />
 </div>
 
 </template>

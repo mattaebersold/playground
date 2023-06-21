@@ -28,30 +28,54 @@
     </div>
   </div>
 
-  <!-- Render body text -->
-  <InView animate once v-if='body' class='animate-[scale_.75s_.3s_both]'>
-    <div class='relative
-      max-w-screen-md mx-auto px-gutter
-      py-32f md:py-56f
-      text-center text-white'>
+  <!-- Container around the body -->
+  <div class="
+    relative
+    max-w-screen-md mx-auto px-gutter
+    py-32f md:py-56f
+    text-center text-white">
+
+
+    <!-- Animate cta button -->
+    <InView animate once v-if='announcementButton.text' class='animate-[scale_.75s_.3s_both]'>
+      <div class="hidden sm:mb-8 sm:flex sm:justify-center">
+        <div class="relative rounded-full px-3 py-1 text-sm leading-6 text-gray-400 ring-1 ring-white/10 hover:ring-white/20">
+
+          <!-- the text -->
+          <span>{{ announcementButton.text }}</span>
+
+          <!-- the link -->
+          <SmartLink
+            :href="announcementButton.text"
+            class="font-semibold text-white">
+            <span class="absolute inset-0" aria-hidden="true" />
+            <span>{{ announcementButton.cta }}</span>
+
+            <!-- <Icon type={ ButtonIcon.RightArrow } /> -->
+
+          </SmartLink>
+
+        </div>
+      </div>
+    </InView>
+
+
+    <!-- Animate the body -->
+    <InView animate once v-if='body' class='animate-[scale_.75s_.3s_both]'>
       <PortableTextMarketing :value='body' />
-    </div>
-  </InView>
+    </InView>
 
-  <!-- Announcement Button -->
-  <InView animate once v-if='announcementButton' class='animate-[scale_.75s_.3s_both]'>
-    <div class='text-center'>
-      <Btn :to='announcementButton.url'>{{ announcementButton.cta }}</Btn>
-    </div>
-  </InView>
-
+  </div>
 </div>
 
 </template>
 
 <script>
+import SmartLink from 'vue-routing-anchor-parser/smart-link'
 
 export default {
+
+  components: { SmartLink },
 
   inheritAttrs: false,
   props: {
