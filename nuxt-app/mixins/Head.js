@@ -2,27 +2,28 @@ export default {
 
   head: function() {
     this.buildHead();
+
+    // TMP. Remove when working
+    console.log(this.buildHead());
   },
 
   computed: {
 
-    // get sanity settings
+    // shorthand for sanity settings
     settings: function() {
       return this.$store.state.settings;
-    },
-
-    seoImage: function() {
-      // # A helper for accessing image values that may be part of an Array with Craft
-      // img = (field) ->
-      // 	field?[0]?.url or
-      // 	field?.url or
-      // 	if field?.length == 0 then null # For empty arrays
-      // 	else field
     }
 
   },
 
   methods: {
+
+    createMetaTag: function(tagName, content) {
+      return {
+        tagName: tagName,
+        content: content
+      };
+    },
 
     buildHead: function() {
 
@@ -30,14 +31,12 @@ export default {
       if(!this.page) { return }
 
       // title
-      let title = this.page.title;
-
       // if there's a metaTitle, use this instead
+      // if there's a meta title suffix default, append it
+      let title = this.page.title;
       if(this.page.metaTitle) {
         title = this.page.metaTitle;
       }
-
-      // if there's a meta title suffix default, append it
       if(this.settings.metaTitleSuffix) {
         title += ` ${this.settings.metaTitleSuffix}`;
       }
@@ -55,47 +54,21 @@ export default {
         image = this.settings.metaImage;
       }
 
+      // Robots
       let robots = this.page.robots;
 
-      // 	robots = @pageSeo.robots or @defaultSeo.robots
-
-      // 	# Allow overwriting of canonical link
-      // 	canonical = switch
-      // 		when @pageSeo.canonicalUrl then @pageSeo.canonicalUrl
-      // 		when canonical then canonical
-      // 		when process.env.URL then process.env.URL + @$route.path
-
-
-
-
-      const head = {
+      // return the head object
+      return {
         title: title,
-        link: [],
-        meta: []
+        meta: [
+          this.createMetaTag('og:title', title),
+          this.createMetaTag('description', description),
+          this.createMetaTag('og:image', image),
+          this.createMetaTag('robots', robots?.join(', '))
+        ].filter(function(tag) {
+          return !!tag?.content;
+        })
       }
-
-      console.log('head', head);
-      return head;
-
-      // 	# Create the object, filtering empties
-      // 	title: title
-      // 	link: if canonical then [
-      // 		hid: 'canonical'
-      // 		rel: 'canonical'
-      // 		href: canonical
-      // 	]
-      // 	meta: [
-      // 		@$metaTag 'og:title', title
-      // 		@$metaTag 'description', description
-      // 		@$metaTag 'og:image', image
-      // 		@$metaTag 'robots', robots?.join ', '
-      // 	].filter (tag) -> !!tag?.content
-
-
     }
-
   }
-
 }
-
-
