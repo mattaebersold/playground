@@ -5,7 +5,11 @@ export const getTower = groq`
   *[_type == 'tower' && uri.current == $uri]{
     ...,
     'uri': uri.current,
-    blocks[] { ${blocksFragment} }
+    blocks[] { ${blocksFragment} },
+    metaTitle,
+    metaDescription,
+    metaImage,
+    robots
   }[0]
 `
 
