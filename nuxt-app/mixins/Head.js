@@ -39,7 +39,7 @@ export default {
 
       // if there's a meta title suffix default, append it
       if(this.settings.metaTitleSuffix) {
-        title += this.settings.metaTitleSuffix;
+        title += ` ${this.settings.metaTitleSuffix}`;
       }
 
       // if no description, use the default
@@ -48,8 +48,15 @@ export default {
         description = this.settings.metaDescription;
       }
 
-      // 	image = img(@pageSeo.metaImage) or img(image) or
-      // 		img(@defaultSeo.metaImage)
+      // use tower's meta image. If none, then
+      // use the default meta image from settings
+      let image = this.page.seoImage;
+      if(!image) {
+        image = this.settings.metaImage;
+      }
+
+      let robots = this.page.robots;
+
       // 	robots = @pageSeo.robots or @defaultSeo.robots
 
       // 	# Allow overwriting of canonical link
@@ -59,10 +66,16 @@ export default {
       // 		when process.env.URL then process.env.URL + @$route.path
 
 
-      // return the head object
-      return {
-        title: title
+
+
+      const head = {
+        title: title,
+        link: [],
+        meta: []
       }
+
+      console.log('head', head);
+      return head;
 
       // 	# Create the object, filtering empties
       // 	title: title
