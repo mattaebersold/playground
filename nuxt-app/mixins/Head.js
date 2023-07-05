@@ -1,10 +1,7 @@
 export default {
 
   head: function() {
-    this.buildHead();
-
-    // TMP. Remove when working
-    console.log(this.buildHead());
+    return this.buildHead();
   },
 
   computed: {
