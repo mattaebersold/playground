@@ -1,6 +1,6 @@
 const typeMap = {
-  simpleCentered: 'BlocksCtaSimpleCentered',
-  simpleJustified: 'BlocksCtaSimpleJustified',
+  simpleCentered: 'BlocksCtaBlocksSimpleCentered',
+  simpleJustified: 'BlocksCtaBlocksSimpleJustified',
 }
 
 export default {
