@@ -37,7 +37,7 @@ export default {
     classes: function() {
       let classes = [];
       if(this.margins) {
-        classes.push('m-2');
+        classes.push('mr-2');
       }
 
       return classes;
