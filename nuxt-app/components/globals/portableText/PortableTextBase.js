@@ -1,5 +1,6 @@
 // Import SmartLink explicitly
 import SmartLink from 'vue-routing-anchor-parser/smart-link'
+import BtnList from '/components/globals/btn/list'
 
 // Render a @nuxtjs/sanity instance with our customizations
 export default {
@@ -7,6 +8,7 @@ export default {
 
   props: {
     value: Array, // An array of PortableText blocks
+    alignment: String
   },
 
   render(create, { props, data }) {
@@ -25,6 +27,10 @@ export default {
         serializers: {
           marks: {
             link: makeLinkSerializer(),
+          },
+
+          types: {
+            buttonList: makeButtonList(props.alignment),
           }
         }
       },
@@ -45,6 +51,19 @@ function makeLinkSerializer() {
         props: {
           to: props.href, // Sanity stores the link as "href"
         }
+      }, children)
+    }
+  }
+}
+
+
+// If there's a button list, then render that component
+function makeButtonList(alignment) {
+  return {
+    functional: true,
+    render(create, { props, children }) {
+      return create(BtnList, {
+        props: { ...props, alignment: alignment}
       }, children)
     }
   }

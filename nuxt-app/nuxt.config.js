@@ -7,6 +7,7 @@ export default {
   ],
 
   buildModules: [
+    '@bkwld/vue-in-view/nuxt',
     '@nuxt/typescript-build',
     '@nuxtjs/tailwindcss',
     '@nuxtjs/google-fonts',

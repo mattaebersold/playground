@@ -5,8 +5,8 @@ import PortableTextBase from "./PortableTextBase"
 export default {
   functional: true,
 
-  // Share all props from Base
-  props: PortableTextBase.props,
+  // Share all props from Base, and alignment from parent
+  props: { ...PortableTextBase.props, alignment: String },
 
   render(create, { props, data }) {
     return create(PortableTextBase, {
