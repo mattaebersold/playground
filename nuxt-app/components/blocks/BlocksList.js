@@ -1,5 +1,5 @@
 import BlockParent from "./BlockParent"
-import CtaBlock from './cta/CtaBlock'
+import CtaBlock from './ctaBlocks/CtaBlock'
 
 // Map Sanity block types to Nuxt component resolvable paths
 const typeMap = {
