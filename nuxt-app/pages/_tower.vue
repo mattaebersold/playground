@@ -12,7 +12,7 @@
 <script>
 
 import { getTower } from '~/queries/towerQueries';
-import HeadMixin from '~/mixins/Head';
+import HeadMixin from '~/mixins/headMixin';
 
 export default {
 
