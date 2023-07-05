@@ -7,8 +7,8 @@ import { structure } from './config/structure'
 export default defineConfig({
   name: 'default',
   title: 'Nuxt Sanity Demo',
-  projectId: 'rnb0s8f2',
-  dataset: 'production',
+  projectId: process.env.SANITY_STUDIO_PROJECT_ID,
+  dataset: process.env.SANITY_STUDIO_DATASET,
   schema,
   plugins: [
     deskTool({

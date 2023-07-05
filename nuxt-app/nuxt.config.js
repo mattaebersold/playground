@@ -43,16 +43,16 @@ export default {
 
   // Sanity settings
   sanity: {
-    projectId: 'rnb0s8f2',
-    dataset: 'production',
+    projectId: process.env.PUBLIC_SANITY_PROJECT_ID,
+    dataset: process.env.PUBLIC_SANITY_DATASET,
   },
 
   // Use Sanity with @nuxt/image
   image: {
     provider: 'sanity',
     sanity: {
-      projectId: 'rnb0s8f2',
-      dataset: 'production',
+      projectId: process.env.PUBLIC_SANITY_PROJECT_ID,
+      dataset: process.env.PUBLIC_SANITY_DATASET,
     }
   },
 
