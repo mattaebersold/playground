@@ -10,7 +10,7 @@ export default {
 
   render(create, { props, data }) {
     return create(PortableTextBase, {
-      props: props, // Passthrough all props
+      props, // Passthrough all props
 
       // Add Sanity/typography prose classes
       class: ['prose-marketing', data.class],
