@@ -41,6 +41,10 @@ export default {
     }
   },
 
+  gtm: {
+    id: process.env.GTM_ID
+  },
+
   // Sanity settings
   sanity: {
     projectId: process.env.PUBLIC_SANITY_PROJECT_ID,
