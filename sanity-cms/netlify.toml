@@ -1,3 +1,9 @@
 # Set Node version (Netlify doesn't respect monorepo's .nvmrc)
 [build.environment]
   NODE_VERSION = '18'
+
+# Fix deep linking within CMS
+[[redirects]]
+  from = "/*"
+  to = "/"
+  status = 200
