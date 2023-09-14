@@ -8,6 +8,7 @@
     "dev": "nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
+    "start-static": "nuxt start --target=static",
     "generate": "nuxt generate --fail-on-error --target=static"
   },
   "dependencies": {

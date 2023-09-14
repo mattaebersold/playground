@@ -1,8 +1,8 @@
 import {defineConfig} from 'sanity'
 import {deskTool} from 'sanity/desk'
 import {visionTool} from '@sanity/vision'
-import { schema } from './config/schema'
-import { structure } from './config/structure'
+import {schema} from './config/schema'
+import {defaultDocumentNode, structure} from './config/structure'
 
 export default defineConfig({
   name: 'default',
@@ -13,6 +13,7 @@ export default defineConfig({
   plugins: [
     deskTool({
       structure,
+      defaultDocumentNode,
     }),
     visionTool()],
 })

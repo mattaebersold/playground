@@ -1,5 +1,6 @@
 import type { StructureResolver } from 'sanity/desk'
 import { CogIcon } from '@sanity/icons'
+import { getViews } from "~/config/views";
 
 export const structure: StructureResolver = (S, context) => {
   return S.list().title('Content').items([
@@ -15,3 +16,15 @@ export const structure: StructureResolver = (S, context) => {
 
   ])
 }
+
+// These are document type that can be previewed.
+const previewDocs = ['tower'];
+
+export const defaultDocumentNode = (S: any, {schemaType}: any) => {
+  const views = getViews(S);
+  if (previewDocs.includes(schemaType)) {
+    return S.document().views(views);
+  }
+
+  return S.document();
+};
