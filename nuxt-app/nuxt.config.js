@@ -15,6 +15,10 @@ export default {
     'packages/cloak-sanity/modules/generate-pages',
   ],
 
+  plugins: [
+    '~/plugins/preview.client.js',
+  ],
+
   // Always show logs (doesn't work from within module)
   build: { quiet: false },
 
@@ -49,6 +53,14 @@ export default {
   sanity: {
     projectId: process.env.PUBLIC_SANITY_PROJECT_ID,
     dataset: process.env.PUBLIC_SANITY_DATASET,
+    additionalClients: {
+      preview: {
+        projectId: process.env.PUBLIC_SANITY_PROJECT_ID,
+        dataset: process.env.PUBLIC_SANITY_DATASET,
+        token: process.env.PUBLIC_SANITY_READ_TOKEN,
+        useCdn: false,
+      },
+    },
   },
 
   // Use Sanity with @nuxt/image
@@ -69,6 +81,10 @@ export default {
   // to import types from sanity-cms directory
   typescript: {
     typeCheck: false,
+  },
+
+  generate: {
+    fallback: true,
   }
 
 }

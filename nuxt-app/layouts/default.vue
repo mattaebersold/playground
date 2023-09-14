@@ -7,7 +7,7 @@
   text-indigo-900t'>
 
   <a class='skip-content' href='#mail'>Skip to main content</a>
-
+  <preview-controls />
   <!-- Page Content -->
   <main id='main'>
     <nuxt class='page'>

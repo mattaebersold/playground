@@ -20,9 +20,14 @@ export default {
 
   mixins: [ HeadMixin ],
 
-  asyncData: async function({ $sanity, $notFound, params }) {
+  asyncData: async function({ $sanity, $notFound, params, $preview }) {
+    let sanityClient = $sanity
 
-    let page = await $sanity.fetch(getTower, {
+    // if preview is set, use preview client
+    if ($preview) {
+      sanityClient = $sanity.preview
+    }
+    let page = await sanityClient.fetch(getTower, {
       uri: `/${params.tower || ''}`
     });
 
