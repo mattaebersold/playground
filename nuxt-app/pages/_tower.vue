@@ -36,6 +36,17 @@ export default {
     // set the data
     return { page };
 
+  },
+
+  mounted() {
+    if (this.$preview && this.$preview.isRealtime) {
+      this.$sanity.preview.client.listen(getTower, {
+          uri: `/${this.$route.params.tower || ''}`
+        })
+        .subscribe((page) => {
+          this.page = page.result
+        })
+    }
   }
 
 }
